@@ -11,7 +11,8 @@ TBD
 
 Here is how this library could be used :
 
-```
+```javascript
+
 import onCovid19 from "on-covid19";
 
 const lagos = {
