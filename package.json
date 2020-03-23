@@ -1,0 +1,20 @@
+{
+  "name": "on-covid19",
+  "version": "0.1.0",
+  "description": "An overly simplified Covid-19 infection spread estimator API",
+  "main": "dist/index.js",
+  "repository": "git@github.com:chalu/on-covid19.git",
+  "author": "Charles Odili <chaluwa@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "babel-jest": "^25.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "jest": "^25.1.0",
+    "parcel-bundler": "^1.12.4"
+  }
+}
