@@ -1,27 +1,29 @@
 {
-  "name": "on-covid19",
+  "name": "on-covid-19",
   "version": "0.1.0",
-  "description": "An overly simplified Covid-19 infection spread estimator API",
+  "description": "An overly simplified COVID-19 infection estimator API",
   "main": "dist/index.js",
-  "repository": "git@github.com:chalu/on-covid19.git",
+  "repository": "git@github.com:chalu/on-covid-19.git",
   "author": "Charles Odili <chaluwa@gmail.com>",
   "license": "MIT",
   "private": false,
   "scripts": {
+    "lint": "eslint src/",
     "demo": "parcel src/index.html --out-dir build",
-    "build": "parcel build src/index.js --no-source-maps --experimental-scope-hoisting"
+    "test": "jest --noStackTrace --passWithNoTests"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
     "babel-jest": "^25.1.0",
     "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-airbnb-base": "^14.1.0",
     "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-prettier": "^3.1.2",
     "jest": "^25.1.0",
-    "parcel-bundler": "^1.12.4"
+    "parcel-bundler": "^1.12.4",
+    "prettier": "^2.0.2"
   },
   "browserslist": [
     "last 1 Chrome versions"
