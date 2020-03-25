@@ -29,7 +29,7 @@ const defaultConfig = {
 };
 
 const delegateAs = (config, timeToElapse, estimator) => {
-  const estimateFor = periodType => () => {
+  const estimateFor = (periodType) => () => {
     const data = {
       ...defaultConfig,
       ...{ timeToElapse, periodType, since: Date.now() },
@@ -54,7 +54,13 @@ const delegateAs = (config, timeToElapse, estimator) => {
  * @param {object} data
  * @returns {object}
  */
-const noopEstimator = async data => data;
+const defaultEstimator = async (data) => {
+  return {
+    data,
+    impact: {},
+    severeImpact: {}
+  };
+};
 
 /**
  *
@@ -64,9 +70,9 @@ const noopEstimator = async data => data;
  * @example
  * onCovid19({...}).estimateImpactAfter(30).days();
  */
-const onCovid19 = (config = defaultConfig, estimator = noopEstimator) => {
+const onCovid19 = (config = defaultConfig, estimator = defaultEstimator) => {
   return {
-    estimateImpactAfter: timeToElapse =>
+    estimateImpactAfter: (timeToElapse) =>
       delegateAs(config, timeToElapse, estimator)
   };
 };
