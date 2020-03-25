@@ -22,13 +22,14 @@ const covid19ImpactEstimator = async data => {
   return {};
 };
 
-export default estimator;
+export default covid19ImpactEstimator;
 
 // src/app.js
 import onCovid19 from "on-covid-19";
 import estimator from "path/to/estimator.js";
 
 const lagosNG = {
+  ...,
   reportedCases: 50,
   population: 22000000
 };
