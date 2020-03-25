@@ -2,8 +2,10 @@
   "name": "on-covid-19",
   "version": "0.1.0",
   "description": "An overly simplified COVID-19 infection estimator API",
+  "keywords": ["covid-19", "nCov", "estimator", "API"],
   "main": "dist/index.js",
   "repository": "git@github.com:chalu/on-covid-19.git",
+  "bugs": "https://github.com/chalu/on-covid-19/issues",
   "author": "Charles Odili <chaluwa@gmail.com>",
   "license": "MIT",
   "private": false,
@@ -27,5 +29,7 @@
   },
   "browserslist": [
     "last 1 Chrome versions"
-  ]
+  ],
+  "unpkg": "dist/index.js",
+  "jsdelivr": "dist/index.js"
 }
