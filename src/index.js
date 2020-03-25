@@ -7,9 +7,8 @@
  *
  * @example
  *
- * onCovid19({
- *
- * }).estimateImpactAfter(30).days();
+ * const result = async onCovid19(data, estimator)
+ *  .estimateImpactAfter(30).days();
  *
  *
  */
@@ -68,7 +67,8 @@ const defaultEstimator = async (data) => {
  * @param {*} estimator
  *
  * @example
- * onCovid19({...}).estimateImpactAfter(30).days();
+ * const result = async onCovid19(data, estimator)
+ *  .estimateImpactAfter(30).days();
  */
 const onCovid19 = (config = defaultConfig, estimator = defaultEstimator) => {
   return {
