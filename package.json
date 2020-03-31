@@ -1,11 +1,18 @@
 {
   "name": "on-covid-19",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An overly simplified COVID-19 infection estimator API",
-  "keywords": ["covid-19", "nCov", "coronavirus", "estimator", "forecast", "API"],
+  "keywords": [
+    "covid-19",
+    "nCov",
+    "coronavirus",
+    "estimator",
+    "forecast",
+    "API"
+  ],
   "main": "dist/index.js",
   "homepage": "https://github.com/chalu/on-covid-19/blob/master/README.md",
-  "repository": "git@github.com:chalu/on-covid-19.git",
+  "repository": "chalu/on-covid-19",
   "bugs": "https://github.com/chalu/on-covid-19/issues",
   "author": "Charles Odili <chaluwa@gmail.com>",
   "license": "MIT",
@@ -32,5 +39,8 @@
     "last 1 Chrome versions"
   ],
   "unpkg": "dist/index.js",
-  "jsdelivr": "dist/index.js"
+  "jsdelivr": "dist/index.js",
+  "dependencies": {
+    "np": "^6.2.0"
+  }
 }

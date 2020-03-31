@@ -4,16 +4,34 @@ An overly simplified COVID-19 infections spread estimation API. Think of this as
 
 ## Installation & Setup
 
-TBD
+1.  Install the package
+    ```
+    npm -i on-covid-19
+    ```
+    ```
+    yarn add on-covid-19
+    ```
+2.  Import and use the api's utilities
+    ```javascript
+    // src/estimator.js
+    import { PERIOD, whatPercentOf, whatIs } from 'on-covid-19';
+
+    ```
+3.  Import and use the core api
+    ```javascript
+    // src/app.js
+    import { onCovid19 } from 'on-covid-19';
+
+    ```   
 
 
 ## Usage
 
-Here is how this library could be used :
+Below is how this library could be used. See the API documentation for more details
 
 ```javascript
-
 // src/estimator.js
+import { PERIOD, whatPercentOf, whatIs } from 'on-covid-19';
 const covid19ImpactEstimator = data => {
   // this is where the estimation 
   // will happen, using all that is in 
