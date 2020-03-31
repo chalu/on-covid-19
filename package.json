@@ -19,7 +19,6 @@
   "private": false,
   "scripts": {
     "lint": "eslint src/",
-    "demo": "parcel src/index.html --out-dir build",
     "test": "jest --noStackTrace --passWithNoTests"
   },
   "devDependencies": {
@@ -39,8 +38,5 @@
     "last 1 Chrome versions"
   ],
   "unpkg": "dist/index.js",
-  "jsdelivr": "dist/index.js",
-  "dependencies": {
-    "np": "^6.2.0"
-  }
+  "jsdelivr": "dist/index.js"
 }
