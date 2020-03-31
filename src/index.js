@@ -1,37 +1,59 @@
 /** @module onCovid19
  *
- * A fluent programming interface allowing users
- * and tools easily estimate covid-19 infections rate based on data.
+ * A fluent programming interface for users
+ * and tools to easily make novelty estimations 
+ * of the impact of covid-19 infections.
  *
  * With this API, client code could look like below :
  *
  * @example
+ * import estimator from 'path/to/estimator.js';
  *
- * const result = async onCovid19(data, estimator)
- *  .estimateImpactAfter(30).days();
- *
- *
+ * const data = { population: 5000000, reportedCases: 247, ... }
+ * const estimate = onCovid19(data, estimator)
+ *    .estimateImpactAfter(30)
+ *    .days();
  */
 
-const PERIOD = {
+/**
+ * Durations to estimate impact over
+ */
+export const PERIOD = {
+  /** Estimate impact in days */
   DAYS: "DAYS",
+
+  /** Estimate impact in weeks */
   WEEKS: "WEEKS",
-  YEARS: "YEARS",
+
+  /** Estimate impact in months */
   MONTHS: "MONTHS"
 };
 
 const defaultConfig = {
-  reportedCases: 35,
-  population: 200000000,
-  totalHospitalBeds: 1000000,
-  testsPerMillionPeople: 0.5
+  region: {
+    name: "Africa",
+    avgAge: 19.7,
+    avgDailyIncomeInUSD: 3,
+    avgDailyIncomePopulation: 0.56
+  },
+  reportedCases: 1992,
+  population: 48437107,
+  totalHospitalBeds: 858331
 };
 
-const delegateAs = (config, timeToElapse, estimator) => {
-  const estimateFor = (periodType) => () => {
+const defaultEstimator = data => {
+  return {
+    data,
+    impact: {},
+    severeImpact: {}
+  };
+};
+
+const estimateAs = (config, timeToElapse, estimator) => {
+  const estimateFor = periodType => () => {
     const data = {
       ...defaultConfig,
-      ...{ timeToElapse, periodType, since: Date.now() },
+      ...{ timeToElapse, periodType },
       ...config
     };
     return estimator(data);
@@ -41,8 +63,6 @@ const delegateAs = (config, timeToElapse, estimator) => {
     days: estimateFor(PERIOD.DAYS),
     week: estimateFor(PERIOD.WEEKS),
     weeks: estimateFor(PERIOD.WEEKS),
-    year: estimateFor(PERIOD.YEARS),
-    years: estimateFor(PERIOD.YEARS),
     month: estimateFor(PERIOD.MONTHS),
     months: estimateFor(PERIOD.MONTHS)
   };
@@ -50,31 +70,24 @@ const delegateAs = (config, timeToElapse, estimator) => {
 
 /**
  *
- * @param {object} data
- * @returns {object}
- */
-const defaultEstimator = async (data) => {
-  return {
-    data,
-    impact: {},
-    severeImpact: {}
-  };
-};
-
-/**
- *
- * @param {*} config
- * @param {*} estimator
+ * @param {Object} config the input data
+ * @param {Function} estimator the function handling estimation
+ * @returns {Object} the impact estimation
  *
  * @example
- * const result = async onCovid19(data, estimator)
- *  .estimateImpactAfter(30).days();
+ * import estimator from 'path/to/estimator.js';
+ *
+ * const data = { population: 5000000, reportedCases: 247, ... }
+ * const estimate = onCovid19(data, estimator)
+ *    .estimateImpactAfter(30)
+ *    .days();
  */
-const onCovid19 = (config = defaultConfig, estimator = defaultEstimator) => {
+export const onCovid19 = (config, estimator = defaultEstimator) => {
   return {
-    estimateImpactAfter: (timeToElapse) =>
-      delegateAs(config, timeToElapse, estimator)
+    /**
+     * A delegate that calls your estimator function
+     */
+    estimateImpactAfter: timeToElapse =>
+      estimateAs(config, timeToElapse, estimator)
   };
 };
-
-export default onCovid19;

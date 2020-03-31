@@ -1,6 +1,6 @@
 # on-covid-19
 
-An overly simplified COVID-19 infections spread estimator library. Think of this as a simple and intuitive programming interface that allows you to take in data and own estimating the impact of Covid-19 infections for a population, over a given period of time.
+An overly simplified COVID-19 infections spread estimation API. Think of this as a simple and intuitive programming interface that allows you to take in data and own estimating the impact of Covid-19 infections for a population, over a given period of time.
 
 ## Installation & Setup
 
@@ -14,7 +14,7 @@ Here is how this library could be used :
 ```javascript
 
 // src/estimator.js
-const covid19ImpactEstimator = async data => {
+const covid19ImpactEstimator = data => {
   // this is where the estimation 
   // will happen, using all that is in 
   // the input data parameter object
@@ -25,8 +25,8 @@ const covid19ImpactEstimator = async data => {
 export default covid19ImpactEstimator;
 
 // src/app.js
-import onCovid19 from "on-covid-19";
-import estimator from "path/to/estimator.js";
+import estimator from "./estimator.js";
+import { onCovid19 } from "on-covid-19";
 
 const lagosNG = {
   ...,
@@ -34,15 +34,11 @@ const lagosNG = {
   population: 22000000
 };
 
-const run = async () => {
-  const result = await onCovid19(lagosNG, estimator)
-    .estimateImpactAfter(30)
-    .days();
+const result = onCovid19(lagosNG, estimator)
+  .estimateImpactAfter(30)
+  .days();
 
-  console.dir(result);
-};
-
-run();
+console.dir(result);
 
 ```
 
