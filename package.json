@@ -1,6 +1,6 @@
 {
   "name": "on-covid-19",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "An overly simplified COVID-19 infection estimator API",
   "keywords": [
     "covid-19",
